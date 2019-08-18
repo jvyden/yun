@@ -18,7 +18,7 @@ function runCommand(input, message) {
   let args = input.split(' ')
   const cmd = args[0].toLowerCase()
   args.shift()
-  let evalout;
+  let out;
   try {
     const path = `${__dirname}/commands/${cmd}.js`
     if(!fs.existsSync(path)) {
@@ -29,17 +29,21 @@ function runCommand(input, message) {
       message.channel.send(embed)
       return
     }
-    evalout = eval(fs.readFileSync(path).toString())
+    // evalout = eval(fs.readFileSync(path).toString())
+    const command = require(path)
+    console.log(command.info)
+    out = command.execute(message)
   }
   catch(e) {
     let embed = new Discord.RichEmbed()
       .setColor("RED")
       .setTitle("An unexpected error occured. Tell a developer:")
-      .setDescription("```js\n" + e + "```")
+      .setDescription("```js\n" + e.stack + "```")
     message.channel.send(embed)
+    console.error(e)
     return
   }
-  return evalout
+  return out
 }
 loadconfig()
 
