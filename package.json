@@ -1,0 +1,19 @@
+{
+  "name": "yun",
+  "version": "1.0.0",
+  "description": "A general purpose Discord bot.",
+  "main": "yun.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvyden420/yun.git"
+  },
+  "author": "jvyden420",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jvyden420/yun/issues"
+  },
+  "homepage": "https://github.com/jvyden420/yun#readme"
+}
