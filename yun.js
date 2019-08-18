@@ -22,11 +22,13 @@ function runCommand(input, message) {
   try {
     const path = `${__dirname}/commands/${cmd}.js`
     if(!fs.existsSync(path)) {
-      let embed = new Discord.RichEmbed()
-        .setColor("RED")
-        .setDescription(`!${cmd} is not a valid command.`)
-        .setFooter("Maybe try !help?")
-      message.channel.send(embed)
+      if(config.commandNotFoundEmbed) {
+        let embed = new Discord.RichEmbed()
+          .setColor("RED")
+          .setDescription(`${config.prefix}${cmd} is not a valid command.`)
+          .setFooter("Maybe try !help?")
+        message.channel.send(embed)
+      }
       return
     }
     // evalout = eval(fs.readFileSync(path).toString())
@@ -51,7 +53,7 @@ client.on('ready', function() {console.log(`Successfully connected to discord as
 client.on('message', function(message) {
   const m = message.toString()
   if(message.author === client.user) {return}
-  if(m.startsWith('!')) {
+  if(m.startsWith(config.prefix)) {
     cmdout = runCommand(m.substr(1), message)
     console.log(`${message.author.tag}: ${m}\n${cmdout}`)
     if(cmdout === undefined) {return}
