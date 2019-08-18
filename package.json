@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jvyden420/yun/issues"
   },
-  "homepage": "https://github.com/jvyden420/yun#readme"
+  "homepage": "https://github.com/jvyden420/yun#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
 }
