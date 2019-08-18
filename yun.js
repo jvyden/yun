@@ -14,4 +14,37 @@ function loadconfig() {
   }
   console.log(`Successfully loaded config ${cfgloc}.`)
 }
+function runCommand(input, message) {
+  let args = input.split(' ')
+  const cmd = args[0].toLowerCase()
+  args.shift()
+  let evalout;
+  try {
+    const path = `${__dirname}/commands/${cmd}.js`
+    if(!fs.existsSync(path)) {
+      embed = new Discord.RichEmbed()
+        .setColor("RED")
+        .setDescription(`!${cmd} is not a valid command.`)
+        .setFooter("Maybe try !help?")
+      message.channel.send(embed)
+      return
+    }
+    evalout = eval(fs.readFileSync(path).toString())
+  }
+  catch(e) {return e.message}
+  return evalout
+}
 loadconfig()
+
+client.on('ready', function() {console.log(`Successfully connected to discord as ${client.user.tag}. (${client.user.id})`)});
+client.on('message', function(message) {
+  const m = message.toString()
+  if(message.author === client.user) {return}
+  if(m.startsWith('!')) {
+    cmdout = runCommand(m.substr(1), message)
+    console.log(`${message.author.tag}: ${m}\n${cmdout}`)
+    if(cmdout === undefined) {return}
+    message.channel.send(cmdout)
+  }
+})
+client.login(config.token)
