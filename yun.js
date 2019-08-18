@@ -31,7 +31,14 @@ function runCommand(input, message) {
     }
     evalout = eval(fs.readFileSync(path).toString())
   }
-  catch(e) {return e.message}
+  catch(e) {
+    embed = new Discord.RichEmbed()
+      .setColor("RED")
+      .setTitle("An unexpected error occured. Tell a developer:")
+      .setDescription("```js\n" + e + "```")
+    message.channel.send(embed)
+    return
+  }
   return evalout
 }
 loadconfig()
