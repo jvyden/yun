@@ -22,7 +22,7 @@ function runCommand(input, message) {
   try {
     const path = `${__dirname}/commands/${cmd}.js`
     if(!fs.existsSync(path)) {
-      embed = new Discord.RichEmbed()
+      let embed = new Discord.RichEmbed()
         .setColor("RED")
         .setDescription(`!${cmd} is not a valid command.`)
         .setFooter("Maybe try !help?")
@@ -32,7 +32,7 @@ function runCommand(input, message) {
     evalout = eval(fs.readFileSync(path).toString())
   }
   catch(e) {
-    embed = new Discord.RichEmbed()
+    let embed = new Discord.RichEmbed()
       .setColor("RED")
       .setTitle("An unexpected error occured. Tell a developer:")
       .setDescription("```js\n" + e + "```")
