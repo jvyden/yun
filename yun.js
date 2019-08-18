@@ -35,6 +35,7 @@ function runCommand(input, message) {
     const command = require(path)
     console.log(command.info)
     out = command.execute(message)
+    delete require.cache[require.resolve(path)]; // Unload module to allow for rapid development
   }
   catch(e) {
     let embed = new Discord.RichEmbed()
