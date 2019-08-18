@@ -34,7 +34,7 @@ function runCommand(input, message) {
     // evalout = eval(fs.readFileSync(path).toString())
     const command = require(path)
     console.log(command.info)
-    out = command.execute(message)
+    out = command.execute(message, args)
     delete require.cache[require.resolve(path)]; // Unload module to allow for rapid development
   }
   catch(e) {
