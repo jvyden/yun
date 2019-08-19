@@ -2,9 +2,10 @@
   "name": "yun",
   "version": "1.0.0",
   "description": "A general purpose Discord bot.",
-  "main": "yun.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc --skipLibCheck && node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,9 @@
   },
   "homepage": "https://github.com/jvyden420/yun#readme",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "@types/dotenv": "^6.1.1",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.1.0",
+    "typescript": "^3.5.3"
   }
 }
