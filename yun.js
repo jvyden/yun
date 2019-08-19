@@ -13,17 +13,13 @@ function loadconfig(reloading = false) {
   }
   catch(e){
     console.error(`Error while reading config ${cfgloc}: ${e}`)
-    if(!reloading) {process.exit(1)} else {
-      console.error(`Config will not be updated until the error is fixed.`)
-    }
+    if(!reloading) {process.exit(1)} else {console.error(`Config will not be updated until the error is fixed.`)}
     return
   }
   config = confignew
   console.log(`Successfully loaded config ${cfgloc}.`)
 }
-Date.prototype.unixTime = function() {
-  return Math.round(this.valueOf() / 1000)
-}
+Date.prototype.unixTime = function() {return Math.round(this.valueOf() / 1000)}
 let lastWatch = new Date(0).unixTime()
 fs.watch(__dirname + "/config.json", (event, filename) => {
   const now = new Date().unixTime()
@@ -49,7 +45,6 @@ function runCommand(input, message) {
       }
       return
     }
-    // evalout = eval(fs.readFileSync(path).toString())
     const command = require(path)
     out = command.execute(message, args)
     delete require.cache[require.resolve(path)]; // Unload module to allow for rapid development
@@ -67,14 +62,15 @@ function runCommand(input, message) {
 }
 loadconfig()
 
-client.on('ready', function() {console.log(`Successfully connected to discord as ${client.user.tag}. (${client.user.id})`)});
+client.on('ready', function() {console.log(`Connected to discord as ${client.user.tag}. (${client.user.id})`)});
 client.on('message', function(message) {
   const m = message.toString()
   if(message.author === client.user) {return}
   if(m.startsWith(config.prefix)) {
     cmdout = runCommand(m.substr(1), message)
-    console.log(`${message.author.tag}: ${m}\n${cmdout}`)
+    console.log(`${message.author.tag}: ${m}`)
     if(cmdout === undefined) {return}
+    console.log(cmdout)
     message.channel.send(cmdout)
   }
 })
