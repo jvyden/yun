@@ -1,10 +1,18 @@
-import discord from "discord.js"
 import dotenv from 'dotenv'
 dotenv.config()
 import "./startup"
+import discord from "discord.js"
+import { AkairoClient } from "discord-akairo";
 
-const token = process.env.TOKEN!
+const prefix = process.env.PREFIX || "!";
+const owners = process.env.OWNERS || "";
 
-const client = new discord.Client();
+const client = new AkairoClient({
+  prefix,
+  ownerID: owners.split(","),
+  commandDirectory: "./dist/commands/"
+},{
+  disableEveryone: true,
+});
 
-console.log(token)
+client.login(process.env.TOKEN!)
