@@ -12,9 +12,9 @@ A general-purpose Discord bot.
 
 4. `cp .env.example .env`
 
-5. `nano config.json`
+5. `nano .env`
 
-    Remember to add your token at this step.
+    **Remember to add your token at this step.**
 
 6. `node yun`
 
