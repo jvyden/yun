@@ -3,7 +3,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 import "./startup"
 
+const token = process.env.TOKEN!
 
-//const client = new discord.Client();
+const client = new discord.Client();
 
-console.log(process.env.TOKEN!)
+console.log(token)
