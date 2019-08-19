@@ -15,3 +15,6 @@ A general-purpose Discord bot.
 Remember to add your token at this step.
 
 6. `node yun`
+
+## Discord
+If you're interested, we have a [development discord](https://discord.gg/6wDfNqM) to discuss changes, features & more.
