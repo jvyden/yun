@@ -16,5 +16,10 @@ const info = {
 }
 
 function execute() {
-  "Yun Uptime: " + process.uptime().toString().toHHMMSS()
+  return "Yun Uptime: " + process.uptime().toString().toHHMMSS()
+}
+
+module.exports = {
+  info: info,
+  execute: execute
 }

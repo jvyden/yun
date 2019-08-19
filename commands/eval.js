@@ -4,7 +4,7 @@ const info = {
 
 function execute(message) {
   m = message.toString()
-  args = m.substr(m.split("eval")[1].length)
+  args = m.substr(m.split(" ")[0].length)
   return eval(args)
 }
 
