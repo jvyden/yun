@@ -5,12 +5,17 @@ export default class extends Command {
     super("revoke", {
       aliases: ["revoke"],
       description: "Revoke's a users naenae privileges.",
-      editable: true
+      args: [{
+        id: "target"
+      }, {
+        id: "rest",
+        match: "rest"
+      }]
     });
   }
-  public async exec(message: Message) {
-    let username = message.toString().split(" ")[1]
-    if(!username) {username = message.author.username}
-    return `${username}'s naenae privileges have been revoked.`
+  
+  public async exec(message: Message, { target, rest }: any) {
+    if (!target) { target = message.author.username }
+    return message.channel.send(`${target}'s naenae privileges have been revoked.`)
   }
 }
