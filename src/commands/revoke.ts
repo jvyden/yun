@@ -2,8 +2,8 @@ import { Command } from "discord-akairo";
 import { Message } from "discord.js";
 export default class extends Command {
   constructor() {
-    super("poll", {
-      aliases: ["poll"],
+    super("revoke", {
+      aliases: ["revoke"],
       description: "Revoke's a users naenae privileges.",
       editable: true
     });
