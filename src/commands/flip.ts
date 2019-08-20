@@ -5,12 +5,11 @@ export default class extends Command {
     super("flip", {
       aliases: ["flip"],
       description: "Flips a coin.",
-      editable: true
     });
   }
+  
   public async exec(message: Message) {
-    const answers = ["Heads", "Tails"];
-    const ra = Math.floor(Math.random() * answers.length);
-    return message.channel.send(`You flipped: ${answers[ra]}`)
+    const res = (Math.random() > 0.5) ? "Heads" : "Tails"
+    return message.channel.send(`You flipped: ${res}`)
   }
 }

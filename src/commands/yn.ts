@@ -5,12 +5,11 @@ export default class extends Command {
     super("yn", {
       aliases: ["yn"],
       description: "Randomly picks yes or no for the indecisive.",
-      editable: true
     });
   }
+
   public async exec(message: Message) {
-    const answers = ["Yes.", "No."];
-    const ra = Math.floor(Math.random() * answers.length);
-    return message.channel.send(answers[ra])
+    const res = (Math.random() > 0.5) ? "Yes." : "No."
+    return message.channel.send(res)
   }
 }

@@ -5,9 +5,9 @@ export default class extends Command {
     super("poll", {
       aliases: ["poll"],
       description: "Quickly makes a poll using arrow reactions.",
-      editable: true
     });
   }
+  
   public async exec(message: Message) {
     await message.react('⬆')
     return await message.react('⬇')
