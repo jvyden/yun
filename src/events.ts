@@ -1,4 +1,5 @@
-import { AkairoClient } from "discord-akairo";
+import { AkairoClient, Command, CommandHandler } from "discord-akairo";
+import { Message, RichEmbedOptions } from "discord.js";
 import { boxContents } from "./utils";
 
 const logStartup = (client: AkairoClient) => {
@@ -14,8 +15,23 @@ const onReady = (client: AkairoClient) => {
   logStartup(client)
   /* if you need anything else */
 }
+//const errorMsg = `\`\`\`js\n${error.stack}\`\`\``
+/*const onError = (error: Error, message: Message, command: Command) => {
+  const embed: RichEmbedOptions = {
+    color: 0xFF0000,
+    description: `${command.prefix}${command} is not a valid command.`,
+    footer: {
+      text: `Maybe try ${command.prefix}?`
+    }
+  }
+  message.channel.send({ embed })
+}*/
 
 export const handleEvents = (client: AkairoClient) => {
-  client.on("ready", () => onReady(client));
+  //const commandHandler = new CommandHandler(client, {});
 
+  client.on("ready", () => onReady(client));
+  /*commandHandler.on("error", 
+    (error: Error, message: Message, command: Command) => 
+      onError(error, message, command));*/
 }
