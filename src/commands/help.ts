@@ -12,14 +12,14 @@ export default class extends Command {
 
   public exec(message: Message) {
     const cstr = this.client.commandHandler.modules.map((command) =>
-      `$${command.id}: ${command.description}`
+      `${process.env.PREFIX}${command.id}: ${command.description}`
     );
 
     const embed: RichEmbedOptions = {
-      title: "Yun",
+      author: {name: "Yun", icon_url: this.client.user.avatarURL},
       description: "",
       fields: [{
-        name: "Commands",
+        name: `Commands (${cstr.length})`,
         value: cstr.join("\n")
       }],
       color: 0x3498Db
