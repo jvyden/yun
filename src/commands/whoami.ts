@@ -23,8 +23,8 @@ export default class extends Command {
   public async exec(message: Message) {
     const out = this.status(message.member)
     const embed: RichEmbedOptions = {
-      title: `You are a${out.n}...`,
-      description: out.type,
+      author: { name: message.author.username, icon_url: message.author.avatarURL },
+      description: `You are a${out.n} ${out.type}`,
       color: out.color
     }
 
