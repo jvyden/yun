@@ -9,8 +9,7 @@ export default class extends Command {
     });
   }
   public async exec(message: Message) {
-    const answers = ["Yes.", "No."];
-    const ra = Math.floor(Math.random() * answers.length);
-    return message.channel.send(answers[ra])
+    const res = (Math.random() > 0.5) ? "Yes." : "No."
+    return message.channel.send(res)
   }
 }
