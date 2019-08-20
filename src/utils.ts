@@ -18,7 +18,7 @@ export const isOwner = (id: string) => (process.env.OWNERS || "14086279883286118
   .some(R.equals(id));
 
 export const isMod = (member: GuildMember) =>
-  member.hasPermission("BAN_MEMBERS") || isOwner(member.id);
+  member.hasPermission("KICK_MEMBERS") || isOwner(member.id);
 
 export const countMembers = (client: AkairoClient) =>
   client.guilds.reduce((all, guild) => guild.memberCount + all, 0);
